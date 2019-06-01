@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import AuthService from './msal'
 
+Vue.prototype.$AuthService = new AuthService()
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

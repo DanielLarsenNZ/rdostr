@@ -25,3 +25,7 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Links
+
+AAD B2C Vue.js: <https://www.sergeydotnet.com/vuejs-with-azure-ad-b2c/>
