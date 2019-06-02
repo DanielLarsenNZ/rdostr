@@ -4,12 +4,13 @@ import config from '../config'
 export default class AuthService {
   constructor () {
     this.applicationConfig = {
-      clientID: config.clientid,
-      authority: config.authority
+      auth: config
     }
-    this.app = new Msal.UserAgentApplication(
-      this.applicationConfig.clientID,
-      this.applicationConfig.authority)
+    this.app = new Msal.UserAgentApplication(this.applicationConfig)
+    this.app.handleRedirectCallback((error, response) => {
+      // handle redirect response or error
+      console.error(error.errorMessage)
+    })
   }
 
   login () {
