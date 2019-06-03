@@ -42,3 +42,10 @@ AAD B2C auth protocols: <https://docs.microsoft.com/en-us/azure/active-directory
 
 Configuring ESLint: <https://eslint.org/docs/user-guide/configuring>
 
+Read the TODO - `this` is not all it seems in single page components 😒: <https://codesandbox.io/s/o29j95wx9>
+
+`this.$root.emit`: <https://flaviocopes.com/vue-components-communication/>
+
+OpenId connect primer: <https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1>
+
+Token auth in ASP.NET Core: <https://developer.okta.com/blog/2018/03/23/token-authentication-aspnetcore-complete-guide>
