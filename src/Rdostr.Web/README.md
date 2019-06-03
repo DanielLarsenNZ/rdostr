@@ -40,3 +40,5 @@ MSAL changes in v1.0.0: <https://github.com/AzureAD/microsoft-authentication-lib
 
 AAD B2C auth protocols: <https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-protocols#protocols>
 
+Configuring ESLint: <https://eslint.org/docs/user-guide/configuring>
+

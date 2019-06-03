@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import AuthService from './msal'
+import RdostrService from './rdostr'
 
 Vue.prototype.$AuthService = new AuthService()
+Vue.prototype.$RdostrService = new RdostrService()
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

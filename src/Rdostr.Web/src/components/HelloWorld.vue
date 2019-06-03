@@ -21,66 +21,7 @@ export default {
       this.$AuthService.logout();
     },
     stations() {
-      var tokenRequest = {
-        scopes: ["49df1c13-8de7-46fc-a1d9-7bf0c8b73377"]
-      };
-
-      this.$AuthService.app
-        .acquireTokenSilent(tokenRequest)
-        .then(response => {
-          // get access token from response
-          // response.accessToken
-          console.log("response.accessToken", response.accessToken);
-          var headers = new Headers();
-          var bearer = "Bearer " + response.accessToken;
-          headers.append("Authorization", bearer);
-
-          var options = {
-            method: "GET",
-            headers: headers
-          };
-
-          var endpoint = "https://localhost:44369/api/stations";
-
-          fetch(endpoint, options).then(resp => {
-            // do something with response
-            console.log(resp);
-          });
-        })
-        .catch(err => {
-          console.error(err.error);
-
-          // could also check if err instance of InteractionRequiredAuthError if you can import the class.
-          if (err.name === "InteractionRequiredAuthError") {
-            console.log(
-              "InteractionRequiredAuthError, trying acquireTokenPopup"
-            );
-
-            return this.$AuthService.app
-              .acquireTokenPopup(tokenRequest)
-              .then(response => {
-                var headers = new Headers();
-                var bearer = "Bearer " + response.accessToken;
-                headers.append("Authorization", bearer);
-
-                var options = {
-                  method: "GET",
-                  headers: headers
-                };
-
-                var endpoint = "https://localhost:44369/api/stations";
-
-                fetch(endpoint, options).then(resp => {
-                  // do something with response
-                  console.log(resp);
-                });
-              })
-              .catch(err => {
-                // handle error
-                console.error(err);
-              });
-          }
-        });
+      this.$RdostrService.getStations(this.$AuthService);
     }
   },
   computed: {
