@@ -15,12 +15,11 @@ export default class RdostrService {
         headers: headers
       }
 
-      fetch(config.getStationsUrl, options).then(resp => {
-        // do something with response
-        console.log(resp)
-      })
+      var body = await fetch(config.getStationsUrl, options)
+      return body.json()
     } catch (err) {
       console.log(err)
+      throw err
     }
   }
 }

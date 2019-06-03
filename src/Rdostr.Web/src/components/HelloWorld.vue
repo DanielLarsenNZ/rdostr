@@ -1,12 +1,18 @@
 <template>
   <div>
-    <div id="label">Sign-in with Microsoft Azure AD B2C</div>
-
-    <button @click="login" v-if="!user">Login</button>
-    <button @click="logout" v-if="user">Logout</button>
-    <button @click="stations" v-if="user">Stations</button>
-
-    <div v-if="user">Hello from Vue.js. User is {{user.name}}</div>
+    <table style="width:100%">
+      <tr>
+        <td><img src="@/assets/logov1_200.png"></td>
+        <td><h1>Rdost⭐r</h1></td>
+        <td style="text-align:right">
+          <h2 v-if="user">
+            {{user.name}}
+          </h2>
+          <button @click="login" v-if="!user">Login</button>
+          <button @click="logout" v-if="user">Logout</button>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -19,9 +25,6 @@ export default {
     },
     logout() {
       this.$AuthService.logout();
-    },
-    stations() {
-      this.$RdostrService.getStations(this.$AuthService);
     }
   },
   computed: {

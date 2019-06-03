@@ -16,7 +16,7 @@ namespace Rdostr.Stations.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Station 1", "Station 2" };
         }
 
         // GET api/values/5

@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <HelloWorld/>
+    <Stations/>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld'
+import Stations from './components/Stations'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    HelloWorld,
+    Stations
+  }
 }
 </script>
 
@@ -16,7 +23,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
