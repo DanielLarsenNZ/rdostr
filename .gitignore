@@ -2,5 +2,6 @@ _work
 .vs
 bin
 obj
-.user
-.suo
+*.user
+*.suo
+PublishProfiles

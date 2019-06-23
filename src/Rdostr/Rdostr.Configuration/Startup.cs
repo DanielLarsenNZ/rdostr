@@ -24,7 +24,6 @@ namespace Rdostr.Configuration
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
-                    // https://login.microsoftonline.com/tfp/{Configuration["AzureAdB2C:Tenant"]}/{Configuration["AzureAdB2C:Policy"]}/v2.0/
                     options.Authority = "https://login.microsoftonline.com/tfp/rdostr.onmicrosoft.com/b2c_1_signupsigninv2/v2.0/";
                     options.Audience = "49df1c13-8de7-46fc-a1d9-7bf0c8b73377";
                     options.Events = new JwtBearerEvents
