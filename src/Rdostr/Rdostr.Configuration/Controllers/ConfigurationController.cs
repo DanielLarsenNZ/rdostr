@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Rdostr.Configuration.Controllers
 {
@@ -19,8 +17,9 @@ namespace Rdostr.Configuration.Controllers
             _config = config;
         }
 
-        // GET api/values
+        // GET api/configuration
         [HttpGet]
+        [Authorize(Policy = "Aucklanders")]     // example of a claims check - see Startup.ConfigureServices
         public ActionResult Get()
         {
             if (User == null || User.Claims == null || !User.Claims.Any())
@@ -28,21 +27,13 @@ namespace Rdostr.Configuration.Controllers
                 return new UnauthorizedResult();
             }
 
-            ClaimsCheck(User.Claims);
-
-            //TODO: Get Key from KeyVault
-
+            // add the claims to the result
             var result = new List<string>(User.Claims.Select(c => c.ToString()));
-            result.Add(_config["Rdostr-Mobile--DataKey1"]);
+
+            // Add the value of a specific Key Vault key named "Rdostr-Mobile--DataKey1" to the result
             result.Add(_config["Rdostr-Mobile:DataKey1"]);
 
             return new JsonResult(result.ToArray());
-        }
-
-        private void ClaimsCheck(IEnumerable<Claim> claims)
-        {
-            //TODO: Implement check claims business logic
-            return;
         }
     }
 }
