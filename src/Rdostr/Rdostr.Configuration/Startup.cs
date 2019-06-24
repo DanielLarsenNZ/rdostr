@@ -27,7 +27,7 @@ namespace Rdostr.Configuration
             const string AuthenticationAuthority = "AuthenticationAuthority";
             const string AuthenticationAudience = "AuthenticationAudience";
 
-            if (string.IsNullOrEmpty(Configuration[AuthenticationAuthority]))
+            if (string.IsNullOrEmpty(Configuration[AuthenticationAuthority]) || string.IsNullOrEmpty(Configuration[AuthenticationAudience]))
                 throw new InvalidOperationException($"App Settings \"{AuthenticationAuthority}\" and/or \"{AuthenticationAudience}\" are missing.");
 
             // Add the authentication handler
@@ -50,6 +50,25 @@ namespace Rdostr.Configuration
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Aucklanders", policy => policy.RequireClaim("city", "Auckland"));
+            });
+
+            // CORS policy
+            const string DefaultCorsPolicy = "DefaultCorsPolicy";
+            const string DefaultCorsPolicyOrigins = "DefaultCorsPolicyOrigins";
+
+            if (string.IsNullOrEmpty(Configuration[DefaultCorsPolicyOrigins]))
+                throw new InvalidOperationException($"App Setting \"{DefaultCorsPolicyOrigins}\" is missing.");
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(DefaultCorsPolicy,
+                builder =>
+                {
+                    builder
+                    .WithOrigins(Configuration[DefaultCorsPolicyOrigins].Split(';'))
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
