@@ -2,18 +2,21 @@
   <div id="app">
     <HelloWorld/>
     <Stations/>
+    <Configuration/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
 import Stations from './components/Stations'
+import Configuration from './components/Configuration'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Stations
+    Stations,
+    Configuration
   }
 }
 </script>

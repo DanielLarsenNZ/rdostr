@@ -22,4 +22,25 @@ export default class RdostrService {
       throw err
     }
   }
+  async getConfiguration(authService) {
+    try {
+      var response = await authService.getToken()
+      console.log("response.accessToken", response.accessToken)
+
+      var headers = new Headers()
+      var bearer = "Bearer " + response.accessToken
+      headers.append("Authorization", bearer)
+
+      var options = {
+        method: "GET",
+        headers: headers
+      }
+
+      var body = await fetch(config.getConfigurationUrl, options)
+      return body.json()
+    } catch (err) {
+      console.log(err)
+      throw err
+    }
+  }
 }

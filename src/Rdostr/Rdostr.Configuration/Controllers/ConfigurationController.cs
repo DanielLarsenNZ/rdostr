@@ -18,8 +18,9 @@ namespace Rdostr.Configuration.Controllers
         }
 
         // GET api/configuration
+        //[Authorize(Policy = "Aucklanders")]     // example of a claims check - see Startup.ConfigureServices
         [HttpGet]
-        [Authorize(Policy = "Aucklanders")]     // example of a claims check - see Startup.ConfigureServices
+        [Authorize]
         public ActionResult Get()
         {
             if (User == null || User.Claims == null || !User.Claims.Any())

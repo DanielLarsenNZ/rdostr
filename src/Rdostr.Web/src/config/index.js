@@ -1,5 +1,6 @@
 export default {
-  clientId: '49df1c13-8de7-46fc-a1d9-7bf0c8b73377',
-  authority: 'https://login.microsoftonline.com/tfp/rdostr.onmicrosoft.com/b2c_1_signupsigninv2',
-  getStationsUrl: 'https://localhost:44369/api/stations'
+  clientId: '33d7c466-6846-42fe-8681-01fb8e4a95f6',
+  authority: 'https://login.microsoftonline.com/cc12c692-5133-4d5b-a349-70ab4f9f36a8',
+  getStationsUrl: 'https://localhost:44369/api/stations',
+  getConfigurationUrl: 'https://localhost:44374/api/configuration'
 }
